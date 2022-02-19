@@ -1,0 +1,162 @@
+
+{#Created by 子舟 on 2021/10/11#}
+
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="../static/mystyle.css">
+{% endblock %}
+
+{% block title %}东北大学水网{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-inverse navbar-static-top" style="height: 60px; background-color: navy; border: aqua; font-size: larger; font-weight: bold" >
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <a href="{{ url_for('user.home_page') }}" target="_self"><img class="navbar-brand" src="../static/image/东大校徽1.jpg"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin: 5px 5px 5px 5px">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{{ url_for('user.home_page') }}">首页</a></li>
+          {% if stu %}
+              <li><a href="{{ url_for('user.need') }}">提交需求</a></li>
+          {% endif %}
+
+      {% if stu %}
+          <li class="dropdown">
+            <a href="{{ url_for('user.show_notify') }}" class="dropdown-toggle">紧急通知<span style="color: red; font-size: large" class="badge">1</span></a>
+          </li>
+
+          <form action="{{ url_for('user.select') }}" class="navbar-form navbar-left" method="post">
+            <div class="form-group">
+              <input type="text" name="filter" class="form-control" placeholder="请输入想要筛选的信息">
+            </div>
+            <button type="submit" class="btn btn-default">筛选</button>
+          </form>
+      {% elif wor %}
+          <li class="dropdown">
+            <a href="{{ url_for('user.set_notify') }}" class="dropdown-toggle">发布紧急通知<span style="color: red; font-size: large" class="badge">1</span></a>
+          </li>
+
+          <form action="{{ url_for('user.select') }}" class="navbar-form navbar-left" method="post">
+            <div class="form-group">
+              <input type="text" name="filter" class="form-control" placeholder="请输入想要筛选的信息">
+            </div>
+            <button type="submit" class="btn btn-default">筛选</button>
+          </form>
+      {% elif mana %}
+          <li class="dropdown">
+            <a href="{{ url_for('user.set_notify') }}" class="dropdown-toggle">发布紧急通知<span style="color: red; font-size: large" class="badge">1</span></a>
+          </li>
+
+          <form action="{{ url_for('user.select') }}" class="navbar-form navbar-left" method="post">
+            <div class="form-group">
+              <input type="text" name="filter" class="form-control" placeholder="请输入想要筛选的信息">
+            </div>
+            <button type="submit" class="btn btn-default">筛选</button>
+          </form>
+      {% else %}
+
+      {% endif %}
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+          {% if stu %}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">欢迎!&nbsp;{{ stu.username }}<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('user.student_center') }}">用户中心</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{{ url_for('user.logout') }}">登出</a></li>
+                  </ul>
+              </li>
+          {% elif wor %}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">欢迎!&nbsp;{{ wor.username }}<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('user.worker_center') }}">工作员中心</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{{ url_for('user.logout') }}">登出</a></li>
+                  </ul>
+              </li>
+          {% elif mana %}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">欢迎!&nbsp;{{ mana.username }}<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('user.manager_center') }}">管理员中心</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{{ url_for('user.logout') }}">登出</a></li>
+                  </ul>
+              </li>
+          {% else %}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">注册<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('user.student_register') }}">学生及教工注册</a></li>
+                    <li><a href="{{ url_for('user.worker_register') }}">工作员注册</a></li>
+{#                    <li role="separator" class="divider"></li>#}
+{#                    <li><a href="{{ url_for('user.manager_register') }}">管理员注册</a></li>#}
+                  </ul>
+              </li>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">登陆<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('user.student_login') }}">学生及教工登陆</a></li>
+                    <li><a href="{{ url_for('user.worker_login') }}">工作员登陆</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{{ url_for('user.manager_login') }}">管理员登陆</a></li>
+                  </ul>
+              </li>
+          {% endif %}
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+{% endblock %}
+
+{#中间内容#}
+{% block content %}
+    <div  class="content-base">
+        {#flash块#}
+        {% block flash %}
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-success container" style="font-size: larger">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <div style="margin-left: 7%">
+                        {{ message }}
+                        {% if mana %}
+                            <a href="{{ url_for('user.manager_center') }}" type="button" class="btn" data-dismiss="alert" style="margin-left: 10px">去审核</a>
+                        {% endif %}
+                    </div>
+                </div><br>
+            {% endfor %}
+        {% endblock %}
+
+
+
+        <div>
+{#            <img src="../static/image/register.svg" alt="">#}
+            <span style="font-size: 20px">你好这里是东北大学水网</span><br><br>
+            <span style="font-size: 25px">很高兴你能使用这个网站</span><br><br>
+            <span style="font-size: 30px">你还在为不能及时送水而苦恼吗?</span><br><br>
+            <span style="font-size: 35px">你还在为总是忘记拨打送水电话而烦恼吗?</span><br><br>
+            <span style="font-size: 40px">你还在因为不能提前购买水票而发愁吗?</span><br><br>
+            <span style="font-size: 50px; color: red">那么快来使用本网站来方便你的生活吧！！！</span><br><br><br><br>
+
+        </div>
+    </div>
+
+
+    {#底部信息#}
+    {% block footer %}
+    <div id="footer">
+            由东北大学<strong> &nbsp;子舟 &nbsp;</strong>制作<br>
+            地址： &nbsp; 联系电话：
+    </div>
+    {% endblock %}
+
+{% endblock %}

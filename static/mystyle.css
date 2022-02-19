@@ -1,0 +1,233 @@
+
+/*Created by 闫世航 on 2021/10/11*/
+
+/*全局样式*/
+:root{
+    --white: #e9e9e9;
+	--gray: #333;
+	--blue: #0367a6;
+	--lightblue: #008997;
+
+	/* 外边框圆角属性 */
+	--button-radius: 0.7rem;
+
+	/* 最大宽、高 的值*/
+	--max-width: 758px;
+	--max-height: 420px;
+}
+
+/*底部样式*/
+#footer{
+    padding: 15px;
+    background-color: ivory;
+    font-size: 15px;
+    line-height: 35px;
+    border-top: black;
+    text-align: center;
+    margin: auto;
+}
+
+/*导航栏校徽样式*/
+.navbar-header{
+    height: 25px;
+    text-align: center;
+    padding:5px 5px 5px 5px;
+}
+
+/*导航栏校徽图片样式*/
+.navbar-brand{
+    padding: 0px;
+    margin: auto;
+}
+
+/*中间内容整体样式*/
+.content-base{
+    text-align: center;
+    color: black;
+    width: 90%;
+    height: 1000px;
+    margin: 100px auto 0px auto;
+    line-height: 40px;
+    background-image: url("../static/image/log.svg");
+    background-size:100%;
+    background-repeat:no-repeat;
+}
+
+/*所有注册页面样式*/
+.content-register{
+    text-align: center;
+    color: black;
+    width: 90%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left:0px;
+    bottom: 0px;
+    right:0;
+    margin: auto;
+    line-height: 30px;
+}
+
+/*所有修改页面样式*/
+.content-update{
+    text-align: center;
+    color: black;
+    width: 90%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left:0px;
+    bottom: 0px;
+    right:0;
+    margin: auto;
+    line-height: 30px;
+}
+
+/*所有登陆页面样式*/
+.content-login{
+    text-align: center;
+    color: black;
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    line-height: 30px;
+}
+
+/*
+.alert {
+    text-align: center;
+    width: 50%;
+    height: 45px;
+    margin: auto;
+    padding: 7px;
+    border: 1px solid transparent;
+    color: brown;
+    background-color: #f0dddd;
+    border-radius: 5px;
+    font-size: larger;
+    font-weight: bolder;
+}
+*/
+
+/*
+.alert2 {
+    text-align: center;
+    width: 50%;
+    height: 45px;
+    margin: auto;
+    padding: 7px;
+    border: 1px solid transparent;
+    color: brown;
+    background-color: #d9edf7;
+    border-radius: 5px;
+    font-size: larger;
+    font-weight: bolder;
+}
+*/
+
+/*登陆注册修改页面的图标样式*/
+.icon{
+    margin: auto;
+    text-align: center;
+}
+
+/*管理员中心中的学生表样式*/
+.student-table{
+    margin-top: 30px;
+}
+
+/*管理员中心中的工作员表样式*/
+.worker-table{
+    margin-top: 30px;
+}
+
+/*管理员中心中的学生表的行样式*/
+.student-table td{
+    background-color: #ffffff;
+    height: 25px;
+    line-height: 200%;
+}
+
+/*管理员中心中的工作员表的行样式*/
+.worker-table td{
+    background-color: #ffffff;
+    height: 25px;
+    line-height: 200%;
+}
+
+/*所有列表的行样式*/
+.font-center{
+    text-align: center;
+}
+
+/*所有列表的行样式*/
+.btbg{
+    background: #e9faff;
+}
+
+/*所有列表的表头行样式*/
+.titfont{
+    font-family: 微软雅黑;
+    font-size: 18px;
+    font-weight: bolder;
+    color: #255e95;
+    background-color: #e9faff;
+    text-align: center;
+}
+
+/*所有列表的表格行样式*/
+.mainfont{
+    font-family: 微软雅黑;
+    font-size: 16px;
+    color: black;
+    background-color: #e9faff;
+    text-align: center;
+}
+
+/*提交需求样式*/
+.need{
+    text-align: center;
+    margin: 200px auto;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+/*工作员、管理员发布通知的页面样式*/
+.set-notify{
+    text-align: center;
+    font-size: larger;
+    color: black;
+    margin: 200px auto;
+    line-height: 35px;
+}
+
+/*展示通知的页面样式*/
+.show-notify{
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    color: red;
+    width: 90%;
+    height: 800px;
+    margin: 100px auto;
+    line-height: 40px;
+}
+
+/*登陆、注册、修改、筛选等所有按钮样式*/
+.btn {
+	background-color: var(--blue);
+	background-image: linear-gradient(90deg, var(--blue) 0%, var(--lightblue) 74%);
+	border-radius: 20px;
+	border: 1px solid var(--blue);
+	color: var(--white);
+	cursor: pointer;
+	/*font-size: 0.8rem;*/
+	font-weight: bold;
+    font-size: 12px;
+	/*letter-spacing: 0.1rem;*/
+	padding: 0.9rem 2rem;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+

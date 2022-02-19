@@ -1,0 +1,24 @@
+
+{#Created by 子舟 on 2021/10/17#}
+
+{% extends 'base.html' %}
+{% block title %}
+发布紧急通知
+{% endblock %}
+
+{% block content %}
+    <div class="content-base">
+        <form class="set-notify" action="{{ url_for('user.accept_notify') }}" method="post">
+            <p><input type="text" name="title" size="25" required="required">标题</p>
+            <p><input type="text" name="content" size="60" style="height: 200px" required="required">内容</p>
+            <p><input class="btn" type="submit" value="发布"></p>
+        </form>
+    </div>
+
+    {% block footer %}
+        <div id="footer">
+                由东北大学<strong> &nbsp;子舟 &nbsp;</strong>制作<br>
+                地址： &nbsp; 联系电话：
+        </div>
+    {% endblock %}
+{% endblock %}

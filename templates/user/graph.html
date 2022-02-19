@@ -1,0 +1,150 @@
+
+{#Created by 闫世航 on 2021/11/1#}
+
+{% extends 'base.html' %}
+{% block title %}
+可视化数据
+{% endblock %}
+
+
+{% block content %}
+    <script src="../../static/echarts.js"></script>
+    <div id="main" style="width: 1000px;height:600px;margin: auto"></div>
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        const colors = ['#5470C6', '#91CC75', '#EE6666','#FFA500'];
+        option = {
+          color: colors,
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'cross'
+            }
+          },
+          grid: {
+            right: '20%',
+            left: '20%'
+          },
+          toolbox: {
+            feature: {
+              dataView: { show: true, readOnly: false },
+              restore: { show: true },
+              saveAsImage: { show: true }
+            }
+          },
+          legend: {
+            data: ['去年', '今年', '去年：月/年','今年：月/年']
+          },
+          xAxis: [
+            {
+              type: 'category',
+              axisTick: {
+                alignWithLabel: true
+              },
+              // prettier-ignore
+              data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+            }
+          ],
+          yAxis: [
+            {
+              type: 'value',
+              name: '去年',
+              min: 0,
+              max: 25,
+              position: 'right',
+              axisLine: {
+                show: true,
+                lineStyle: {
+                  color: colors[0]
+                }
+              },
+              axisLabel: {
+                formatter: '{value} 千单'
+              }
+            },
+            {
+              type: 'value',
+              name: '今年',
+              min: 0,
+              max: 25,
+              position: 'right',
+              offset: 80,
+              axisLine: {
+                show: true,
+                lineStyle: {
+                  color: colors[1]
+                }
+              },
+              axisLabel: {
+                formatter: '{value} 千单'
+              }
+            },
+            {
+              type: 'value',
+              name: '去年：月/年',
+              min: 0,
+              max: 25,
+              position: 'left',
+              axisLine: {
+                show: true,
+                lineStyle: {
+                  color: colors[2]
+                }
+              },
+              axisLabel: {
+                formatter: '{value} %'
+              }
+            },
+            {
+              type: 'value',
+              name: '今年：月/年',
+              min: 0,
+              max: 25,
+              position: 'left',
+              offset: 80,
+              axisLine: {
+                show: true,
+                lineStyle: {
+                  color: colors[3]
+                }
+              },
+              axisLabel: {
+                formatter: '{value} %'
+              }
+            }
+          ],
+          series: [
+            {
+              name: '去年',
+              type: 'bar',
+              yAxisIndex: 0,
+              data: {{ old_order_sum }}
+            },
+            {
+              name: '今年',
+              type: 'bar',
+              yAxisIndex: 1,
+              data: {{ order_sum }}
+            },
+            {
+              name: '去年：月/年',
+              type: 'line',
+              yAxisIndex: 2,
+              data: {{ old_rate }}
+            },
+            {
+              name: '今年：月/年',
+              type: 'line',
+              yAxisIndex: 3,
+              data: {{ rate }}
+            }
+          ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+{% endblock %}

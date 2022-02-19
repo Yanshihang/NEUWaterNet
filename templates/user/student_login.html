@@ -1,0 +1,37 @@
+
+{#Created by 子舟 on 2021/10/14#}
+
+{% extends 'base.html' %}
+{% block title %}
+学生登陆
+{% endblock %}
+{% block content %}
+    <div class="content-base">
+        {% block flash %}
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-danger container" style="font-size: larger">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ message }}
+                </div><br>
+            {% endfor %}
+        {% endblock %}
+        <div class="content-login">
+            <br>
+            <h2 style="color: navy; margin: auto auto 50px auto">学生及教工登陆</h2>
+            <div>
+                <form action="{{ url_for('user.student_login') }}" method="post">
+                    <p><img class="icon" src="../../static/image/student_id.png" alt="" width="20" height="20"><input type="text" name="id" placeholder="学生号" required="required"></p>
+                    <p><img class="icon" src="../../static/image/password.png" alt="" width="20" height="20"><input type="password" name="password" placeholder="密码" required="required"></p>
+                    <p><input type="submit" value="登陆" class="btn"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% block footer %}
+        <div id="footer">
+                由东北大学<strong> &nbsp;子舟 &nbsp;</strong>制作<br>
+                地址： &nbsp; 联系电话：
+        </div>
+    {% endblock %}
+{% endblock %}

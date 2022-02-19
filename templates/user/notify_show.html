@@ -1,0 +1,22 @@
+
+{#Created by 子舟 on 2021/10/17#}
+
+{% extends 'base.html' %}
+{% block title %}
+紧急通知
+{% endblock %}
+
+{% block content %}
+    <div class="show-notify" style="align-content: center">
+        <p style="color: black; font-size: 14px">发布时间：{{notify.datetime}}
+        <p>标题：<input type="text" name="title" style="text-align: center" value="{{ notify.title }}"></p>
+        <p>内容：<input type="text" name="content" size="40" style="height:fit-content;text-align: center" value="{{ notify.content }}"></p>
+    </div>
+    
+    {% block footer %}
+        <div id="footer">
+                由东北大学<strong> &nbsp;子舟 &nbsp;</strong>制作<br>
+                地址： &nbsp; 联系电话：
+        </div>
+    {% endblock %}
+{% endblock %}

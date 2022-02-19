@@ -1,0 +1,36 @@
+
+{#Created by 子舟 on 2021/10/17#}
+
+{% extends 'base.html' %}
+{% block title %}用户中心{% endblock %}
+{% block content %}
+    <div class="content-base">
+        {% block flash %}
+            {% for message in get_flashed_messages() %}
+                <div class="alert alert-danger container" style="font-size: larger">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ message }}
+                </div><br>
+            {% endfor %}
+        {% endblock %}
+        <div class="content-update">
+            <form action="{{ url_for('user.mmstudent_update') }}" method="post">
+                <p><img class="icon" src="../../static/image/student_id.png" alt="" width="20" height="20"><input type="text" name="id" value="{{ info.id }}" required="required"></p>
+                <p><img class="icon" src="../../static/image/acount.png" alt="" width="20" height="20"><input type="text" name="username" value="{{ info.username }}" required="required"></p>
+                <p><img class="icon" src="../../static/image/password.png" alt="" width="20" height="20"><input type="password" name="password" value="{{ info.password }}" required="required"></p>
+                <p><img class="icon" src="../../static/image/password.png" alt="" width="20" height="20"><input type="password" name="confirm_password" value="{{ info.password }}" required="required"></p>
+                <p><img class="icon" src="../../static/image/phone.png" alt="" width="20" height="20"><input type="text" name="phone" value="{{ info.phone }}" required="required"></p>
+                <p><img class="icon" src="../../static/image/order.png" alt="" width="20" height="20"><input type="text" name="order"  value="{{ info.order }}" required="required"></p>
+                <p><img class="icon" src="../../static/image/address.png" alt="" width="20" height="20"><input type="text" name="dormitory" size="25" value="{{ info.dormitory }}" required="required"></p>
+                <p><input class="btn" type="submit" value="更改"></p>
+            </form>
+        </div>
+    </div>
+
+    {% block footer %}
+        <div id="footer">
+                由东北大学<strong> &nbsp;子舟 &nbsp;</strong>制作<br>
+                地址： &nbsp; 联系电话：
+        </div>
+    {% endblock %}
+{% endblock %}
