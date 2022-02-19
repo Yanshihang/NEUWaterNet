@@ -1,5 +1,5 @@
 # NEUWaterNet
-python, html, css, flask, bootstrap
+python, html, css, javascript, flask, bootstrap
 
 ### 使用说明
 
